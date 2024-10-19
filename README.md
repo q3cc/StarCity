@@ -1,3 +1,4 @@
+![StarCity](https://raw.githubusercontent.com/q3cc/StarCity/main/logo/logo_light.png)
 # StarCity
 
 ### 关于本仓库
