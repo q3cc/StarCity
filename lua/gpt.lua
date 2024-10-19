@@ -1,7 +1,6 @@
--- 引入必要的模块
 local omega = require("omega")
 local json = require("json")
-local coromega = require("lua.coromega").from(omega)
+local coromega = require("coromega").from(omega)
 
 local version=coromega.config.Version
 if version=="0.0.1" then -- 只有当配置文件版本较旧的时候才升级
@@ -12,7 +11,7 @@ if version=="0.0.1" then -- 只有当配置文件版本较旧的时候才升级
     coromega:update_config(coromega.config)
 end
      local KEY=coromega.config["API密钥"]
-     local model=coromega.config["模型"]
+     local model=coromega.config["模型"] -- 可根据需要更改为其他模型，如 gpt-4
      local API_URL=coromega.config["API"]
 
 -- 打开或创建一个键值对数据库
@@ -20,9 +19,9 @@ local conversation_db = coromega:key_value_db("conversation_history_db", "text_l
 
 -- 配置部分
 local CONFIG = {
-    OPENAI_API_KEY = KEY, -- 替换为你的OpenAI API密钥
+    OPENAI_API_KEY = KEY,
     OPENAI_API_URL = API_URL,
-    MODEL = model, -- 可根据需要更改为其他模型，如 gpt-4
+    MODEL = model,
     MAX_TOKENS = 150, -- 响应的最大token数
     TEMPERATURE = 0.7, -- 生成文本的随机性
     TIMEOUT = 30 -- HTTP请求的超时时间，单位秒
