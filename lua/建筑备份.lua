@@ -4,7 +4,7 @@ package.path = ("%s;%s"):format(
     package.path,
     omega.storage_path.get_code_path("LuaLoader", "?.lua")
 )
-local coromega = require("coromega").from(omega)
+local coromega = require("lua.coromega").from(omega)
 local version = coromega.config.Version
 
 if version == "0.0.1" then -- 只有当配置文件版本较旧的时候才升级
