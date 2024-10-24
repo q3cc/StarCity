@@ -82,6 +82,8 @@ coromega:when_called_by_game_menu({
     local user_key = key_db:get(caller_name)
     if not user_key then
         caller:say("你没有绑定 Key 哦，使用命令 ’/tell @a[tag=omega_bot] 绑定key 你的key‘ 命令进行绑定吧~")
+        caller:raw_say({rawtext={{text="[使用前须知]\n仅供个人学习使用，不保证稳定性，且不提供任何技术支持。\n本服务支持所有使用 OpenAI 的 API 接口。\n根据《生成式人工智能服务管理暂行办法》的要求，请勿对大陆地区公众提供一切未经备案的生成式人工智能服务。\n\n§l[免责声明]§r\n本服务所使用的存储方式为明文存储，请在信任此服务提供者及其技术或服务提供商的前提下使用本插件。\n如遇 API 密钥泄露，插件作者概不负责。\n本服务中的信息和内容仅供参考，用户应自行判断其准确性和适用性，开发者不对因使用本服务所产生的任何直接或间接损失负责。\n本服务可能包含第三方链接或信息，开发者不对这些内容的准确性或合法性负责，用户需自行承担使用风险"}}})
+
         return
     end
 
