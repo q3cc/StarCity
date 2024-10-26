@@ -6,7 +6,7 @@
 local omega = require("omega")
 local json = require("json")
 --- @type Coromega
-local coromega = require("lua.coromega").from(omega)
+local coromega = require("coromega").from(omega)
 -- Powered by Q3CC
 
 print("config of 生成公告:  ",json.encode(coromega.config))

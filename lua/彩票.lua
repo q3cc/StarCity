@@ -4,7 +4,7 @@ package.path = ("%s;%s"):format(
     package.path,
     omega.storage_path.get_code_path("LuaLoader", "?.lua")
 )
-local coromega = require("lua.coromega").from(omega)
+local coromega = require("coromega").from(omega)
 local version = coromega.config.Version
 
 -- 生成随机字符串的函数
