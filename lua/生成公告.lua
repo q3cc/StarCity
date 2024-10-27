@@ -21,7 +21,7 @@ local ban_reason = "违反《游戏安全与处罚规则》"
 -- end
 -- print("end")
 
-local function display_candidates_and_get_selection_resolver_enclosure(disp)
+local function display_candidates_and_get_selection_resolver_enclosure(disp)--构建在线玩家列表
     local candidates = coromega:get_all_online_players()
     local selectable_candidates = {}
     for i, candidate in pairs(candidates) do
@@ -40,7 +40,7 @@ local function display_candidates_and_get_selection_resolver_enclosure(disp)
     end
 end
 
-
+--终端菜单
 coromega:when_called_by_terminal_menu({
     triggers = { "ggban","公告ban" },
     argument_hint = "[玩家名] [时间] [原因] [违反规定] [是否转发至QQ]",
