@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>每日一签</title>
+    <style>
+        body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#a8edea 0%,#fed6e3 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:500px;margin:0}
+        .quote-box{background:rgba(255,255,255,0.8);padding:30px 40px;border-radius:15px;box-shadow:0 8px 16px rgba(0,0,0,0.2);max-width:600px;text-align:center;position:relative}
+        .avatar{width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid #fff;position:absolute;top:-50px;left:50%;transform:translateX(-50%)}
+        .nickname{margin-top:60px;font-size:1.2em;color:#333;font-weight:bold}
+        .quote{font-size:1.5em;margin:20px 0;color:#555;max-width:400px;word-wrap:break-word}
+        .author,.date{margin-top:10px;color:#888;font-size:0.9em;max-width:400px;word-wrap:break-word}
+        .refresh-button{margin-top:25px;padding:10px 25px;background:#FF6F61;color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:1em;transition:background 0.3s}
+        .refresh-button:hover{background:#FF3B2E}
+    </style>
+</head>
+<body>
+<div class="quote-box">
+    <img src="" alt="头像" class="avatar" id="avatar">
+    <div class="nickname" id="nickname">昵称</div>
+    <div class="quote" id="quote">加载中...</div>
+    <div class="author" id="author"></div>
+    <div class="date" id="date"></div>
+    <button class="refresh-button" onclick="displayQuote()">换一签</button>
+</div>
+<script>
+    const defaultQuotes=[{text:"每天进步一点点，成功就在不远处。",author:"未知"},{text:"坚持就是胜利。",author:"毛泽东"},{text:"机会是留给有准备的人。",author:"路易·巴斯德"},{text:"心态决定成败。",author:"未知"},{text:"失败乃成功之母。",author:"托马斯·爱迪生"},{text:"天行健，君子以自强不息。",author:"《易经》"},{text:"知识改变命运。",author:"高尔基"}];
+    function getQueryParams(){const params={};const queryString=window.location.search.substring(1);queryString.split("&").forEach(pair=>{const [key,value]=pair.split("=");if(key){params[decodeURIComponent(key)]=decodeURIComponent(value||"")}});return params}
+    function getRandomQuote(){return defaultQuotes[Math.floor(Math.random()*defaultQuotes.length)]}
+    function displayQuote(){const params=getQueryParams();document.getElementById('avatar').src=params.avatar||"https://via.placeholder.com/100";document.getElementById('nickname').textContent=params.nickname||"用户";let quoteText=params.quote;let quoteAuthor=params.author||"未知";if(!quoteText){const randomQuote=getRandomQuote();quoteText=randomQuote.text;quoteAuthor=randomQuote.author}document.getElementById('quote').textContent=`“${quoteText}”`;document.getElementById('author').textContent=`—— ${quoteAuthor}`;document.getElementById('date').textContent=new Date().toLocaleDateString()}
+    function setMinHeight(){document.body.style.minHeight=`${document.querySelector('.quote-box').offsetHeight+200}px`}
+    window.onload=function(){displayQuote();setMinHeight()}
+</script>
+</body>
+</html>
