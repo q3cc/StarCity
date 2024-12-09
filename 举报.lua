@@ -7,7 +7,7 @@ package.path = ("%s;%s"):format(
 local coromega = require("coromega").from(omega)
 local version=coromega.config.Version
 if version=="0.0.1" then -- 只有当配置文件版本较旧的时候才升级
-    coromega.config["发送的群聊"]="群聊:903420213"
+    coromega.config["发送的群聊"]="903420213"
     coromega.config.Version="0.0.2"
     coromega:update_config(coromega.config)
 end
@@ -29,9 +29,8 @@ local function display_candidates_and_get_selection_resolver_enclosure(disp)
 end
 
 local function send_qq (player_name, player, reason)
-    
-    coromega:send_cqhttp_message(Qgroup_nember, send_to_qq_message)
-    
+    local message = string.format("玩家 %s 举报了 %s ，原因：%s", player, player_name, reason)
+    coromega:send_cqhttp_message(Qgroup_nember, message)  
 end
 
 -- 游戏菜单举报
